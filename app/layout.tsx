@@ -4,9 +4,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import OrganizationSchema from "@/components/shared/OrganizationSchema";
-import LiveChat from "@/components/chat/LiveChat";
+import dynamic from "next/dynamic";
+const LiveChat = dynamic(() => import("@/components/chat/LiveChat"), { ssr: false })
 import GlobalBackground from "@/components/layout/GlobalBackground";
 import PageTransition from "@/components/shared/PageTransition";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -75,6 +78,8 @@ export default function RootLayout({
         </main>
       <Footer />
 <LiveChat />
+<Analytics />
+<SpeedInsights />
 
 {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
   <>

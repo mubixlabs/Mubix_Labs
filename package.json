@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@react-three/fiber": "^9.6.1",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "firebase": "^12.15.0",

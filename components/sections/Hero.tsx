@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -18,7 +18,11 @@ export default function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const headline = "We Build Software That Moves The World Forward";
 
+  // Three.js ko delay se load karne ke liye
+  const [showBg, setShowBg] = useState(false);
+
   useEffect(() => {
+    // Text animation
     if (!headlineRef.current) return;
 
     const words = headlineRef.current.querySelectorAll(".word");
@@ -35,13 +39,20 @@ export default function Hero() {
         delay: 0.2,
       }
     );
+
+    // Three.js background ko 200ms delay se mount karo
+    const timer = setTimeout(() => {
+      setShowBg(true);
+    }, 200);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[radial-gradient(circle_at_top,_#ffedd5_0%,_#ffffff_60%)] pt-24">
-      {/* Hero Three.js Background */}
+      {/* Hero Three.js Background with delay */}
       <div className="absolute inset-0">
-        <ThreeBackground />
+        {showBg && <ThreeBackground />}
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-8">
