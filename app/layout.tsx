@@ -4,8 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import OrganizationSchema from "@/components/shared/OrganizationSchema";
-import dynamic from "next/dynamic";
-const LiveChat = dynamic(() => import("@/components/chat/LiveChat"), { ssr: false })
+import LiveChatLoader from "@/components/chat/LiveChatLoader";
 import GlobalBackground from "@/components/layout/GlobalBackground";
 import PageTransition from "@/components/shared/PageTransition";
 import { Analytics } from "@vercel/analytics/react";
@@ -77,7 +76,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
       <Footer />
-<LiveChat />
+<LiveChatLoader />
 <Analytics />
 <SpeedInsights />
 
