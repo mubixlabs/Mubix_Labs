@@ -1,0 +1,15 @@
+[33m4a43fae[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmaster[m[33m)[m cleanup: remove unused files and dependencies
+ app/login/page.tsx                     |    0
+ app/mubix-optimizer/page.tsx           |    0
+ components/hooks/useAuth.ts            |    0
+ components/hooks/useIsMobile.ts        |   16 [31m-[m
+ components/hooks/useScrollAnimation.ts |    0
+ components/shared/CustomCursor.tsx     |    0
+ components/shared/MagneticButton.tsx   |    0
+ components/shared/SectionHeading.tsx   |    0
+ components/types/index.ts              |    0
+ components/ui/button.tsx               |   67 [31m-[m
+ lib/firebase.ts                        |    1 [31m-[m
+ package-lock.json                      | 2411 [32m++[m[31m------------------------------[m
+ package.json                           |    5 [31m-[m
+ 13 files changed, 129 insertions(+), 2371 deletions(-)

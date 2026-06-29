@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -72,9 +73,30 @@ export default function RootLayout({
         <main className="flex-1">
           <PageTransition>{children}</PageTransition>
         </main>
-        <Footer />
-        <LiveChat />
-      </body>
+      <Footer />
+<LiveChat />
+
+{process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+  <>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+      strategy="afterInteractive"
+    />
+
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+          page_path: window.location.pathname,
+        });
+      `}
+    </Script>
+  </>
+)}
+</body>
     </html>
   );
 }
