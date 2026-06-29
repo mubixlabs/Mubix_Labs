@@ -7,7 +7,7 @@ import OrganizationSchema from "@/components/shared/OrganizationSchema";
 import LiveChatLoader from "@/components/chat/LiveChatLoader";
 import GlobalBackground from "@/components/layout/GlobalBackground";
 import PageTransition from "@/components/shared/PageTransition";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
