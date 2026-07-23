@@ -9,51 +9,41 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 const ThreeBackground = dynamic(
   () => import("@/components/three/ThreeBackground"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
 export default function Hero() {
   const headlineRef = useRef<HTMLHeadingElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [showBg, setShowBg] = useState(false);
   const headline = "We Build Software That Moves The World Forward";
 
-  // Three.js ko delay se load karne ke liye
-  const [showBg, setShowBg] = useState(false);
+  useEffect(() => {
+    const desktop = window.innerWidth >= 1024;
+    setIsDesktop(desktop);
+    if (desktop) {
+      const id = setTimeout(() => setShowBg(true), 400);
+      return () => clearTimeout(id);
+    }
+  }, []);
 
   useEffect(() => {
-    // Text animation
     if (!headlineRef.current) return;
-
     const words = headlineRef.current.querySelectorAll(".word");
-
     gsap.fromTo(
       words,
       { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: "power3.out",
-        delay: 0.2,
-      }
+      { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power3.out", delay: 0.2 }
     );
-
-    // Three.js background ko 200ms delay se mount karo
-    const timer = setTimeout(() => {
-      setShowBg(true);
-    }, 200);
-
-    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-[radial-gradient(circle_at_top,_#ffedd5_0%,_#ffffff_60%)] pt-24">
-      {/* Hero Three.js Background with delay */}
-      <div className="absolute inset-0">
-        {showBg && <ThreeBackground />}
-      </div>
+      {isDesktop && showBg && (
+        <div className="absolute inset-0">
+          <ThreeBackground />
+        </div>
+      )}
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-8">
         <motion.div
@@ -82,8 +72,7 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600"
         >
-          From powerful developer tools to enterprise web solutions Mubix Labs
-          delivers innovation that scales.
+          From powerful developer tools to enterprise web solutions — Mubix Labs delivers innovation that scales.
         </motion.p>
 
         <motion.div
@@ -97,10 +86,7 @@ export default function Hero() {
             className="group inline-flex items-center gap-2 rounded-full bg-brand-600 px-7 py-3.5 text-sm font-semibold text-white shadow-brand-glow transition-all hover:scale-105 hover:bg-brand-700"
           >
             Explore Our Work
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1"
-            />
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
 
           <Link
