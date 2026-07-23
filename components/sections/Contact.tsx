@@ -41,9 +41,11 @@ export default function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden bg-white/90 backdrop-blur-sm py-20">
       {/* Three.js Background */}
-      <div className="absolute inset-0 opacity-40">
-        <ThreeBackground />
-      </div>
+    {isDesktop && (
+  <div className="absolute inset-0 opacity-40">
+    <ThreeBackground />
+  </div>
+)}
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
