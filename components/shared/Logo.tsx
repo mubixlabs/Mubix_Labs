@@ -10,6 +10,8 @@ export default function Logo({ light = false }: { light?: boolean }) {
           src="/logo.png"
           alt="Mubix Labs"
           fill
+          sizes="48px"
+          priority
           className="object-contain transition-transform group-hover:scale-110"
         />
       </div>
