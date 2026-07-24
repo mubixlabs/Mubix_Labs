@@ -1,40 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 
+const headline = "We Build Software That Moves The World Forward";
+const words = headline.split(" ");
+
 export default function Hero() {
-  const headlineRef = useRef<HTMLHeadingElement>(null);
-  const headline = "We Build Software That Moves The World Forward";
-
-  useEffect(() => {
-    let gsapInstance: typeof import("gsap")["gsap"] | null = null;
-
-    import("gsap").then(({ gsap }) => {
-      gsapInstance = gsap;
-      if (!headlineRef.current) return;
-      const words = headlineRef.current.querySelectorAll(".word");
-      gsap.to(words, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.07,
-        ease: "power3.out",
-      });
-    });
-
-    return () => {
-      if (gsapInstance && headlineRef.current) {
-        const words = headlineRef.current.querySelectorAll(".word");
-        gsapInstance.killTweensOf(words);
-      }
-    };
-  }, []);
-
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-24"
+    <section
+      className="relative flex min-h-screen items-center overflow-hidden pt-24"
       style={{ background: "radial-gradient(circle at top, #ffedd5 0%, #ffffff 60%)" }}
     >
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:px-8">
@@ -48,25 +24,24 @@ export default function Hero() {
           Building software since day one
         </motion.div>
 
-        <h1
-          ref={headlineRef}
-          className="text-balance text-4xl font-bold leading-tight tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl"
-        >
-          {headline.split(" ").map((word, i) => (
-            <span
+        <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl">
+          {words.map((word, i) => (
+            <motion.span
               key={i}
-              className="word mr-3 inline-block"
-              style={{ opacity: 0, transform: "translateY(40px)" }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
+              className="mr-3 inline-block"
             >
               {word}
-            </span>
+            </motion.span>
           ))}
         </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.6 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600"
         >
           From powerful developer tools to enterprise web solutions — Mubix Labs delivers innovation that scales.
@@ -75,7 +50,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.95, duration: 0.6 }}
+          transition={{ delay: 1.0, duration: 0.6 }}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Link

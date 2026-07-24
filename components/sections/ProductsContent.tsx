@@ -2,15 +2,12 @@
 
 import Carousel from "@/components/ui/Carousel";
 import ProductCard from "@/components/ui/ProductCard";
-import SideDecor from "@/components/shared/SideDecor";
 import { products } from "@/data/products";
 
 export default function ProductsContent() {
   return (
     <>
       <section className="relative bg-white/90 backdrop-blur-sm py-20">
-        <SideDecor side="left" />
-        <SideDecor side="right" />
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
           <span className="text-sm font-semibold uppercase tracking-wide text-brand-600">
             Our Products

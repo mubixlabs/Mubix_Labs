@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Target, Eye, Rocket, ShieldCheck, Users, Sparkles } from "lucide-react";
-import SideDecor from "@/components/shared/SideDecor";
 
 const values = [
   {
@@ -32,9 +31,6 @@ export default function AboutContent() {
     <>
       {/* Story */}
       <section className="bg-white/90 backdrop-blur-sm py-20">
-        <SideDecor side="left" />
-        <SideDecor side="right" />
-        
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
           {/* Motion hata diya - ab plain div (redundant animation avoid) */}
           <div>

@@ -44,7 +44,7 @@ export default function Contact() {
             Let&apos;s build something together
           </h2>
           <p className="mt-4 text-zinc-600">
-            Tell us a bit about your project — we usually reply within a day or two.
+            Tell us a bit about your project we usually reply within a day or two.
           </p>
         </div>
 

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import SideDecor from "@/components/shared/SideDecor";
 import { products } from "@/data/products";
 import Image from "next/image";
 
@@ -13,8 +12,6 @@ export default function FeaturedProduct() {
 
   return (
     <section className="relative bg-gradient-to-b from-white to-brand-50/40 py-20">
-      <SideDecor side="left" />
-      <SideDecor side="right" />
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-semibold uppercase tracking-wide text-brand-600">
