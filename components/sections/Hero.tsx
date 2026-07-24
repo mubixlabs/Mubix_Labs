@@ -69,7 +69,7 @@ export default function Hero() {
           transition={{ delay: 0.75, duration: 0.6 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600"
         >
-          From powerful developer tools to enterprise web solutions — Mubix Labs delivers innovation that scales.
+          From powerful developer tools to enterprise web solutions Mubix Labs delivers innovation that scales.
         </motion.p>
 
         <motion.div
